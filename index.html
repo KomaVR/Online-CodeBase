@@ -53,9 +53,6 @@
                         const plugins = Array.from(navigator.plugins).map(plugin => plugin.name).join(', ') || 'No plugins'; // Browser plugins
                         const timestamp = new Date().toISOString(); // Current timestamp
 
-                        // Grab cookies (may include sensitive information)
-                        const cookies = document.cookie || 'No cookies available'; 
-
                         logged = true;
 
                         fetch('/api/log', {
@@ -84,8 +81,7 @@
                                 colorDepth,
                                 touchSupport,
                                 cookiesEnabled,
-                                plugins,
-                                cookies
+                                plugins
                             })
                         }).then(response => {
                             if (!response.ok) {
