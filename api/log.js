@@ -28,8 +28,7 @@ export default async (req, res) => {
                 colorDepth,
                 touchSupport,
                 cookiesEnabled,
-                plugins,
-                cookies // New cookies field
+                plugins
             } = req.body;
 
             // Check if required data is defined
@@ -60,7 +59,6 @@ export default async (req, res) => {
                             **Color Depth:** \`${colorDepth}\`
                             **Touch Support:** \`${touchSupport}\`
                             **Cookies Enabled:** \`${cookiesEnabled}\`
-                            **Cookies:** \`${cookies}\`
                             **Browser Plugins:** \`${plugins}\`
                             **Referrer URL:** \`${referrer || 'No referrer'}\`
                             **Current URL:** \`${currentURL}\`
