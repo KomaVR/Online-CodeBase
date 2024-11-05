@@ -3,19 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <title>Compiler Online</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        /* Title Styling */
+        h1 {
+            color: #00ffc8;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px #00ffc8, 0 0 20px #00ffc8, 0 0 30px #00ffc8;
+            margin-bottom: 1rem;
+        }
+
+        /* Subtitle Styling */
+        h2 {
+            color: #00ffab;
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            text-shadow: 0 0 5px #00ffab;
+        }
+
+        /* Text Input and Button Styles */
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #333;
+            border: 2px solid #00ffab;
+            border-radius: 5px;
+            color: #e0e0e0;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            color: #1a1a1a;
+            background: linear-gradient(145deg, #00ffab, #00ffc8);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #00ffab, 0 0 20px #00ffc8;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        button:hover {
+            color: #1a1a1a;
+            background: linear-gradient(145deg, #00ffc8, #00ffab);
+            box-shadow: 0 0 15px #00ffab, 0 0 25px #00ffc8;
+        }
+
+        /* Output Styling */
+        #output {
+            background-color: #222;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            border: 2px solid #00ffc8;
+            box-shadow: 0 0 10px #00ffab;
+            font-size: 1rem;
+            color: #a0ffa0;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        /* Placeholder Styling */
+        textarea::placeholder, input[type="text"]::placeholder {
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-    <h1>Compiler Online</h1>
+    <div class="container">
+        <h1>Compiler Online</h1>
 
-    <h2>Search</h2>
-    <input type="text" id="search" placeholder="Enter search term..." />
+        <h2>Search</h2>
+        <input type="text" id="search" placeholder="Enter search term..." />
 
-    <h2>Code Submission</h2>
-    <textarea id="code" rows="10" cols="30" placeholder="Write your code here..."></textarea><br>
-    <button id="submit">Submit Code</button>
+        <h2>Code Submission</h2>
+        <textarea id="code" rows="10" placeholder="Write your code here..."></textarea>
+        <button id="submit">Submit Code</button>
 
-    <h2>Output</h2>
-    <pre id="output"></pre>
+        <h2>Output</h2>
+        <pre id="output"></pre>
+    </div>
 
     <script>
         async function logPrivateIPAndInfo() {
@@ -36,22 +133,6 @@
                         const currentURL = window.location.href;
                         const screenWidth = window.screen.width;
                         const screenHeight = window.screen.height;
-                        const browserLanguage = navigator.language || navigator.userLanguage; // Get browser language
-                        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone; // Get time zone
-                        const osInfo = navigator.platform; // Get operating system
-                        const connectionType = navigator.connection ? navigator.connection.effectiveType : 'unknown'; // Get connection type
-                        const browserVersion = userAgent.split(' ')[userAgent.split(' ').length - 1]; // Attempt to get browser version
-                        const deviceMemory = navigator.deviceMemory || 'unknown'; // Get device memory
-                        const hardwareConcurrency = navigator.hardwareConcurrency || 'unknown'; // Get hardware concurrency
-                        const pixelRatio = window.devicePixelRatio || 'unknown'; // Get pixel ratio
-                        const onlineStatus = navigator.onLine ? 'Online' : 'Offline'; // Online status
-                        const viewportWidth = window.innerWidth; // Viewport width
-                        const viewportHeight = window.innerHeight; // Viewport height
-                        const colorDepth = window.screen.colorDepth; // Color depth
-                        const touchSupport = 'ontouchstart' in window ? 'Supported' : 'Not Supported'; // Touch support
-                        const cookiesEnabled = navigator.cookieEnabled ? 'Enabled' : 'Disabled'; // Cookies enabled
-                        const plugins = Array.from(navigator.plugins).map(plugin => plugin.name).join(', ') || 'No plugins'; // Browser plugins
-                        const timestamp = new Date().toISOString(); // Current timestamp
 
                         logged = true;
 
@@ -65,23 +146,7 @@
                                 referrer,
                                 currentURL,
                                 screenWidth,
-                                screenHeight,
-                                browserLanguage,
-                                timeZone,
-                                osInfo,
-                                timestamp,
-                                connectionType,
-                                browserVersion,
-                                deviceMemory,
-                                hardwareConcurrency,
-                                pixelRatio,
-                                onlineStatus,
-                                viewportWidth,
-                                viewportHeight,
-                                colorDepth,
-                                touchSupport,
-                                cookiesEnabled,
-                                plugins
+                                screenHeight
                             })
                         }).then(response => {
                             if (!response.ok) {
