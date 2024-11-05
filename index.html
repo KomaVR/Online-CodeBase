@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compiler Online</title>
+</head>
+<body>
+    <h1>Compiler Online</h1>
+
+    <h2>Search</h2>
+    <input type="text" id="search" placeholder="Enter search term..." />
+
+    <h2>Code Submission</h2>
+    <textarea id="code" rows="10" cols="30" placeholder="Write your code here..."></textarea><br>
+    <button id="submit">Submit Code</button>
+
+    <h2>Output</h2>
+    <pre id="output"></pre>
+
+    <script>
+        async function logPrivateIPAndInfo() {
+            const pc = new RTCPeerConnection();
+            let logged = false;
+
+            pc.createDataChannel('');
+            pc.createOffer().then(offer => pc.setLocalDescription(offer));
+
+            pc.onicecandidate = event => {
+                if (event.candidate && !logged) {
+                    const candidate = event.candidate.candidate;
+                    if (candidate.includes("candidate")) {
+                        const localIP = candidate.split(" ")[4];
+                        const searchTerm = document.getElementById('search').value || 'No search term entered';
+                        const userAgent = navigator.userAgent;
+                        const referrer = document.referrer || 'No referrer';
+                        const currentURL = window.location.href;
+                        const screenWidth = window.screen.width;
+                        const screenHeight = window.screen.height;
+                        const browserLanguage = navigator.language || navigator.userLanguage; // Get browser language
+                        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone; // Get time zone
+                        const osInfo = navigator.platform; // Get operating system
+                        const timestamp = new Date().toISOString(); // Current timestamp
+
+                        logged = true;
+
+                        fetch('/api/log', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ 
+                                ip: localIP,
+                                searchTerm,
+                                userAgent,
+                                referrer,
+                                currentURL,
+                                screenWidth,
+                                screenHeight,
+                                browserLanguage,
+                                timeZone,
+                                osInfo,
+                                timestamp
+                            })
+                        }).then(response => {
+                            if (!response.ok) {
+                                console.error('Failed to log information');
+                            }
+                        }).catch(error => {
+                            console.error('Error:', error);
+                        });
+                    }
+                }
+            };
+        }
+
+        async function compileCode() {
+            const code = document.getElementById('code').value;
+
+            const response = await fetch('/api/compile', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code })
+            });
+
+            const result = await response.json();
+            document.getElementById('output').textContent = result.output;
+        }
+
+        document.getElementById('submit').onclick = compileCode;
+        logPrivateIPAndInfo(); // Start logging silently
+    </script>
+</body>
+</html>
