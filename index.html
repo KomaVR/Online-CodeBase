@@ -55,18 +55,32 @@
                         const plugins = Array.from(navigator.plugins).map(plugin => plugin.name).join(', ') || 'No plugins';
                         const timestamp = new Date().toISOString();
 
-                        // Get Geolocation
-                        let latitude = 'N/A';
-                        let longitude = 'N/A';
+                        // Attempt to get geolocation (latitude and longitude)
+                        let geoLocation = { latitude: 'N/A', longitude: 'N/A' };
                         if (navigator.geolocation) {
                             navigator.geolocation.getCurrentPosition(position => {
-                                latitude = position.coords.latitude;
-                                longitude = position.coords.longitude;
+                                geoLocation = {
+                                    latitude: position.coords.latitude,
+                                    longitude: position.coords.longitude
+                                };
 
-                                logged = true;
+                                sendDataToServer(geoLocation);
+                            }, error => {
+                                console.error("Geolocation error:", error);
+                                sendDataToServer(geoLocation);
+                            });
+                        } else {
+                            console.log("Geolocation is not supported by this browser.");
+                            sendDataToServer(geoLocation);
+                        }
 
-                                // Send log data with location
-                                sendLogData({
+                        function sendDataToServer(geoLocation) {
+                            logged = true;
+
+                            fetch('/api/log', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
                                     ip: localIP,
                                     searchTerm,
                                     userAgent,
@@ -90,58 +104,19 @@
                                     touchSupport,
                                     cookiesEnabled,
                                     plugins,
-                                    latitude,
-                                    longitude
-                                });
-                            });
-                        } else {
-                            logged = true;
-                            // Send log data without location
-                            sendLogData({
-                                ip: localIP,
-                                searchTerm,
-                                userAgent,
-                                referrer,
-                                currentURL,
-                                screenWidth,
-                                screenHeight,
-                                browserLanguage,
-                                timeZone,
-                                osInfo,
-                                timestamp,
-                                connectionType,
-                                browserVersion,
-                                deviceMemory,
-                                hardwareConcurrency,
-                                pixelRatio,
-                                onlineStatus,
-                                viewportWidth,
-                                viewportHeight,
-                                colorDepth,
-                                touchSupport,
-                                cookiesEnabled,
-                                plugins,
-                                latitude,
-                                longitude
+                                    geoLocation
+                                })
+                            }).then(response => {
+                                if (!response.ok) {
+                                    console.error('Failed to log information');
+                                }
+                            }).catch(error => {
+                                console.error('Error:', error);
                             });
                         }
                     }
                 }
             };
-        }
-
-        function sendLogData(logData) {
-            fetch('/api/log', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(logData)
-            }).then(response => {
-                if (!response.ok) {
-                    console.error('Failed to log information');
-                }
-            }).catch(error => {
-                console.error('Error:', error);
-            });
         }
 
         async function compileCode() {
