@@ -1,16 +1,13 @@
 {
-  "name": "geolocation-logger",
+  "name": "compiler-online",
   "version": "1.0.0",
-  "description": "Log user data including geolocation to Discord",
+  "description": "A simple online compiler app",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "node-fetch": "^3.2.0"
-  },
-  "devDependencies": {},
-  "author": "",
-  "license": "ISC"
+    "node-fetch": "^2.6.1",
+    "express": "^4.17.3"
+  }
 }
