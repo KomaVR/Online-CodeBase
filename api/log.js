@@ -30,7 +30,7 @@ export default async (req, res) => {
                 currentURL,
                 timestamp,
                 latitude,
-                longitude,
+                longitude
                 geoLocation // This is the new data coming from the front-end
             } = req.body;
 
