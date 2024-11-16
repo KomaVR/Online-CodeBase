@@ -2,12 +2,13 @@
   "name": "compiler-online",
   "version": "1.0.0",
   "description": "A simple online compiler app",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.3.0",
     "express": "^4.17.3"
   }
 }
